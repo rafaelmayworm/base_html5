@@ -48,10 +48,8 @@ class Actionscript3Complete(sublime_plugin.EventListener):
 		source_paths = [join(st.project_path, p) for p in st.config['source-path']]
 		for path in source_paths:
 			# all files
-			for w in os.walk(path, followlinks=True):
-				for f in w[2]:
-					# Found something! Check if it's exact or partial...
-					package_name = re.sub(extension_re, '', join(w[0], f).replace(path+'/', '').replace('/','.'))
+			for root, dirs, files in os.walk(path, followlinks=True):
+				for f in files:
 					AS3suggestions.append((re.sub(extension_re, '', f), re.sub(extension_re, '', f)))
 		return AS3suggestions
 
