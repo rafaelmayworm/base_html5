@@ -4,9 +4,10 @@ from stat import *
 class SWCDump(object):
 
 	"""Dumps swcs into temp path so the package will be able to parse them"""
-	def __init__(self, project_path, library_paths):
+	def __init__(self, project_path, library_paths, package_path):
 		self.library_paths = library_paths
 		self.project_path = project_path
+		self.package_path = package_path
 		self.dump_paths = []
 		# do the nasty work
 		self.dump()
@@ -43,13 +44,12 @@ class SWCDump(object):
 				if should_dump:
 					# removing old files
 					shutil.rmtree(swc_path_to, True)
-					class_path = "%s:%s" % (os.path.join(os.path.dirname(__file__), '..', 'bin', 'java'), os.path.join(os.path.dirname(__file__), '..', 'bin', 'java', 'swfutils.jar'))
+					class_path = "%s:%s" % (os.path.join(self.package_path, 'bin', 'java'), os.path.join(self.package_path, 'bin', 'java', 'swfutils.jar'))
 					class_path = class_path.replace(' ', '\ ')
 					# unzip swc
 					zipfile.ZipFile(swc_path_from).extractall(swc_path_to)
 					# run external utility
 					result = os.system("java -cp %s Main %s/library.swf %s/classes" % (class_path, swc_path_to, swc_path_to))
-
 
 	
 	def tmp_swc_dir(self):

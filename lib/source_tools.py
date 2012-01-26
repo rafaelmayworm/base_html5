@@ -13,6 +13,7 @@ class SourceTools(object):
 		
 	def find_package(self, word):
 		""" find import for class """
+		
 		# Check if there was no input
 		if word == '': return []
 		# Search
@@ -54,7 +55,7 @@ class SourceTools(object):
 		return result
 
 	def search_project_paths(self, word):
-		swcs = swc_dump.SWCDump(self.project_path, self.config['library-path']);
+		swcs = swc_dump.SWCDump(self.project_path, self.config['library-path'], self.st_lib_path);
 		source_paths = [join(self.project_path, p) for p in self.config['source-path']]
 		# Regexes
 		partial_re = re.compile('\\b%s\w*\.(as|mxml)$' % word, re.IGNORECASE)
