@@ -72,7 +72,7 @@ class SourceTools(object):
 				for f in w[2]:
 					if not partial_re.match(f): continue
 					# Found something! Check if it's exact or partial...
-					package_name = re.sub(extension_re, '', join(w[0], f).replace(path+'/', '').replace('/','.'))
+					package_name = re.sub(extension_re, '', join(w[0], f).replace(path+os.sep, '').replace(os.sep,'.'))
 					if exact_re.match(f):
 						exact_matches.append(package_name)
 					else:
