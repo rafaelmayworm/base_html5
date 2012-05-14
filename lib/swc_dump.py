@@ -44,7 +44,7 @@ class SWCDump(object):
 				if should_dump:
 					# removing old files
 					shutil.rmtree(swc_path_to, True)
-					class_path = "%s:%s" % (os.path.join(self.package_path, 'bin', 'java'), os.path.join(self.package_path, 'bin', 'java', 'swfutils.jar'))
+					class_path = "%s%s%s" % (os.path.join(self.package_path, 'bin', 'java'),os.pathsep,os.path.join(self.package_path, 'bin', 'java', 'swfutils.jar'))
 					class_path = class_path.replace(' ', '\ ')
 					# unzip swc
 					zipfile.ZipFile(swc_path_from).extractall(swc_path_to)
