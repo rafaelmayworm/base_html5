@@ -5,7 +5,7 @@ Installation
 --------
 
 `cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/`  
-`git clone git://github.com/lucasdupin/SublimeAS3.git ActionScript3`
+`git clone git://github.com/jrmoretti/SublimeAS3.git ActionScript3`
 
 You'll need to remove the old AS Package, to do so, execute:  
 `rm -rf ActionScript`
@@ -35,4 +35,9 @@ TODO
 Contextual autocomplete  
 Sort imports by name  
 Create project script  
-Dump SWCs in a regular interval  
+Dump SWCs in a regular interval
+
+CREDITS
+-----
+[Lucas Dupin](http://github.com/lucasdupin)
+[Jay Moretti](http://github.com/jrmoretti)
