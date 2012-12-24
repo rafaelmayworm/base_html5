@@ -15,7 +15,7 @@ Make sure the Flex SDK is available in your PATH
 
 Updating
 --------
-`cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/`  
+`cd ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/ActionScript3`  
 `git pull`
 
 About
@@ -28,7 +28,7 @@ Use at your own risk!
 
 TODO
 -----
-Contextual autocomplete
-Sort imports by name
-Script para criar projeto
-Dump SWCs in a regular interval
+Contextual autocomplete  
+Sort imports by name  
+Create project script  
+Dump SWCs in a regular interval  

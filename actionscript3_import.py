@@ -4,33 +4,27 @@ import source_tools
 
 class Actionscript3Import(sublime_plugin.TextCommand):
 	def run(self, edit):
-		self.edit = edit
 		# Project reference
 		st = source_tools.SourceTools(self.view.file_name(), os.path.join(sublime.packages_path(), 'ActionScript3'))
 
 		# Get the word we'll search for
-		self.current_word_region = self.view.word(self.view.sel()[0])
-		self.current_word = self.view.substr(self.current_word_region)
+		current_word_region = self.view.word(self.view.sel()[0])
+		current_word = self.view.substr(current_word_region)
 
-		self.matches = st.find_package(self.current_word.strip())
+		matches = st.find_package(current_word.strip())
 
-		if len(self.matches) == 0:
+		if len(matches) == 0:
 			sublime.status_message("No package found");
-			return
-		elif len(self.matches) == 1:
+		elif len(matches) == 1:
 			# Found only one, let's insert it
-			imp = self.matches[0]
+			imp = matches[0]
 		else:
 			# Lots of choices
-			self.view.window().show_quick_panel(self.matches, self.on_import_selected)
-			return	
-		self.finilize_import(imp)
-
-	def finilize_import(self, imp):
+			imp = matches[0] # TODO
 		# Class name
 		cla = imp.split('.').pop()
 		# Replace Class name
-		self.view.replace(self.edit, self.current_word_region, cla)
+		self.view.replace(edit, current_word_region, cla)
 
 		# Exit if already imported
 		if self.view.find("^\\s*import\\s+%s(\\s|;)" % imp.replace('.', '\\.'), 0):
@@ -44,11 +38,6 @@ class Actionscript3Import(sublime_plugin.TextCommand):
 		insert_after = sublime.Region(0, 0) if pkg is None else pkg # after the package, if it exists
 
 		l = self.view.line(insert_after.end())
-		self.view.replace(self.edit, l, "%s\n\timport %s;" % (self.view.substr(l), imp));
+		self.view.replace(edit, l, "%s\n\timport %s;" % (self.view.substr(l), imp));
+
 		self.view.show(self.view.sel()[0])
-
-
-	def on_import_selected(self, index):
-		if index == -1 :
-			return
-		self.finilize_import(self.matches[index])
