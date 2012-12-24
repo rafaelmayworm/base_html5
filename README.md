@@ -10,8 +10,10 @@ Installation
 You'll need to remove the old AS Package, to do so, execute:  
 `rm -rf ActionScript`
 
-Make sure the Flex SDK is available in your PATH
-(by adding it to your .profile or .bash_profile)
+Using Falcon (or other SDK's)
+on your build.yaml file, add
+'sdk-path:
+    - "{SDK_PATH}"''
 
 Updating
 --------
