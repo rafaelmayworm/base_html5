@@ -14,6 +14,8 @@ Using Falcon (or other SDK's)
 on your build.yaml file, add
 `sdk-path:
     - "{SDK_PATH}"`
+    
+for more tips on how to create and run a project, please check (the sample project)[https://github.com/jrmoretti/SAS3DefaultProject]
 
 Updating
 --------
