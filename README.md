@@ -12,8 +12,8 @@ You'll need to remove the old AS Package, to do so, execute:
 
 Using Falcon (or other SDK's)
 on your build.yaml file, add
-'sdk-path:
-    - "{SDK_PATH}"''
+`sdk-path:
+    - "{SDK_PATH}"`
 
 Updating
 --------
